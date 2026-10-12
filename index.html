@@ -68,9 +68,9 @@
     .p4{background:linear-gradient(135deg,#654065,#9a6199)}
     .why{background:var(--mint)}
     .why-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
-    .photo-card{position:relative}
+    .photo-card{display:grid;gap:18px}
     .photo-card img{width:100%;height:570px;object-fit:cover;border-radius:32px;box-shadow:var(--shadow)}
-    .mini-card{position:absolute;right:-24px;bottom:28px;background:white;border-radius:20px;padding:18px 20px;width:240px;box-shadow:var(--shadow)}
+    .mini-card{position:static;background:white;border-radius:20px;padding:20px 22px;width:100%;box-shadow:none;border:1px solid #dbe9e4}
     .mini-card strong{color:var(--green);font-size:18px}
     .features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
     .feature{background:white;padding:20px;border-radius:18px;border:1px solid #dbe9e4}
@@ -84,15 +84,27 @@
     .news-body small{font-weight:900;color:var(--green);text-transform:uppercase;letter-spacing:.08em}
     .news-body h3{font-size:20px;line-height:1.28;margin:9px 0 8px}
     .news-body p{color:var(--muted);line-height:1.6;font-size:14px;margin:0}
-    .spmb{padding-top:32px}
+    .spmb{padding-top:48px}
     .spmb-card{display:grid;grid-template-columns:.85fr 1.15fr;overflow:hidden;border-radius:32px;background:#0c4f42;color:white;box-shadow:var(--shadow)}
     .spmb-copy{padding:56px}
     .spmb-copy h2{margin-bottom:20px}
     .spmb-copy p{color:#d9ece6;line-height:1.7}
     .spmb-points{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:28px 0}
     .spmb-point{padding:12px 14px;background:rgba(255,255,255,.08);border-radius:12px;font-size:13px;font-weight:700}
-    .spmb-media{background:#f0b33b;display:grid;place-items:center;padding:28px}
-    .spmb-media img{max-height:620px;border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.2)}
+    .spmb-form-wrap{background:white;color:var(--ink);padding:42px}
+    .form-kicker{font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--green-2);margin-bottom:8px}
+    .form-title{font-size:30px;line-height:1.1;margin:0 0 8px;letter-spacing:-.03em}
+    .form-note{font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 26px}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .field{display:grid;gap:7px}
+    .field.full{grid-column:1/-1}
+    .field label{font-size:13px;font-weight:800;color:#31433d}
+    .field input,.field select,.field textarea{width:100%;border:1px solid #d5e1dd;border-radius:14px;padding:13px 14px;font:inherit;background:#fbfdfc;color:var(--ink);outline:none}
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--green-2);box-shadow:0 0 0 3px rgba(14,119,97,.08)}
+    .field textarea{min-height:90px;resize:vertical}
+    .form-actions{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:20px;flex-wrap:wrap}
+    .form-status{font-size:12px;color:var(--muted)}
+    .native-submit{border:0;cursor:pointer}
     footer{background:#092e26;color:#cde0da;padding:48px 0 28px}
     .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
     footer h4{color:white;margin-top:0}
@@ -108,7 +120,7 @@
       .program-grid{grid-template-columns:1fr 1fr}
       .why-grid,.spmb-card{grid-template-columns:1fr}
       .photo-card img{height:440px}
-      .mini-card{right:16px}
+      .mini-card{right:auto}
       .news-grid{grid-template-columns:1fr 1fr}
       .news-card:first-child{grid-column:1/-1}
       .footer-grid{grid-template-columns:1fr 1fr}
@@ -133,10 +145,14 @@
       .program-grid,.features,.news-grid,.footer-grid,.spmb-points{grid-template-columns:1fr}
       .news-card:first-child{grid-column:auto}
       .program{min-height:210px}
-      .photo-card img{height:330px}
-      .mini-card{position:static;width:auto;margin-top:-30px;margin-inline:14px}
+      .photo-card img{height:auto;aspect-ratio:4/5}
+      .mini-card{position:static;width:auto;margin:0}
       .spmb-copy{padding:34px 24px}
-      .spmb-media{padding:18px}
+      .spmb-form-wrap{padding:28px 20px}
+      .form-grid{grid-template-columns:1fr}
+      .field.full{grid-column:auto}
+      .form-actions{align-items:stretch}
+      .form-actions .btn{width:100%}
     }
   </style>
 </head>
@@ -257,10 +273,54 @@
               <div class="spmb-point">✓ Akuntansi</div>
               <div class="spmb-point">✓ Tata Busana</div>
             </div>
-            <a class="btn" style="background:#f3b63f;color:#17352d" href="https://bit.ly/SPMB_SMK_Musa" target="_blank" rel="noopener">Lihat Informasi Pendaftaran</a>
+            <a class="btn" style="background:#f3b63f;color:#17352d" href="#spmbForm">Isi Formulir Sekarang</a>
           </div>
-          <div class="spmb-media">
-            <img src="https://storage.schoolmedia.id/01-cms-website/smkmusacepu.sch.id/galeri/69a4e2a6dc0f8_PPDB.jpeg" alt="Poster SPMB SMK Muhammadiyah 1 Cepu 2026/2027" />
+          <div class="spmb-form-wrap">
+            <div class="form-kicker">Formulir Pendaftaran Demo</div>
+            <h3 class="form-title">Daftar langsung dari website.</h3>
+            <p class="form-note">Contoh alur SPMB native. Pada website final, data dapat masuk ke dashboard sekolah tanpa mengarahkan calon siswa ke Google Form.</p>
+            <form id="spmbForm">
+              <div class="form-grid">
+                <div class="field full">
+                  <label for="nama">Nama lengkap calon siswa</label>
+                  <input id="nama" name="nama" placeholder="Nama lengkap" required />
+                </div>
+                <div class="field">
+                  <label for="asal">Asal sekolah</label>
+                  <input id="asal" name="asal" placeholder="SMP/MTs asal" required />
+                </div>
+                <div class="field">
+                  <label for="wa">Nomor WhatsApp</label>
+                  <input id="wa" name="wa" inputmode="tel" placeholder="08xxxxxxxxxx" required />
+                </div>
+                <div class="field full">
+                  <label for="jurusan">Pilihan program keahlian</label>
+                  <select id="jurusan" name="jurusan" required>
+                    <option value="">Pilih program keahlian</option>
+                    <option>Teknik Otomotif</option>
+                    <option>Bisnis Daring & Pemasaran</option>
+                    <option>Akuntansi</option>
+                    <option>Tata Busana</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="ortu">Nama orang tua / wali</label>
+                  <input id="ortu" name="ortu" placeholder="Nama orang tua / wali" />
+                </div>
+                <div class="field">
+                  <label for="waortu">WhatsApp orang tua</label>
+                  <input id="waortu" name="waortu" inputmode="tel" placeholder="08xxxxxxxxxx" />
+                </div>
+                <div class="field full">
+                  <label for="alamat">Alamat singkat</label>
+                  <textarea id="alamat" name="alamat" placeholder="Desa/Kecamatan/Kabupaten"></textarea>
+                </div>
+              </div>
+              <div class="form-actions">
+                <span class="form-status" id="formStatus">Demo UI — belum menyimpan data ke server.</span>
+                <button class="btn btn-primary native-submit" type="submit">Kirim Pendaftaran</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -289,5 +349,13 @@
       </div>
     </div>
   </footer>
+<script>
+  document.getElementById('spmbForm')?.addEventListener('submit', function(e){
+    e.preventDefault();
+    const status = document.getElementById('formStatus');
+    status.textContent = 'Demo berhasil: pada versi final data akan masuk ke dashboard SPMB sekolah.';
+    status.style.color = '#0e7761';
+  });
+</script>
 </body>
 </html>
