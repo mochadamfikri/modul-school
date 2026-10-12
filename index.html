@@ -56,9 +56,15 @@
     h2{font-size:clamp(34px,4.5vw,56px);line-height:1.04;letter-spacing:-.04em;margin:8px 0 0}
     .lead{color:var(--muted);line-height:1.75;max-width:650px}
     .program-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-    .program{min-height:260px;border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;color:white;box-shadow:var(--shadow)}
+    .program{min-height:260px;border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;color:white;box-shadow:var(--shadow);transform:scale(.96) translateY(8px);opacity:.58;filter:saturate(.72) brightness(.9);transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .45s ease,filter .45s ease,box-shadow .45s ease;will-change:transform}
     .program:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,30,24,.04),rgba(3,30,24,.86));z-index:1}
     .program>*{position:relative;z-index:2}
+    .program.is-active{transform:scale(1.055) translateY(-12px);opacity:1;filter:saturate(1.12) brightness(1.05);box-shadow:0 22px 55px rgba(7,60,48,.28);z-index:5}
+    .program.is-active:after{content:"";position:absolute;inset:0;border:2px solid rgba(255,255,255,.5);border-radius:inherit;pointer-events:none;z-index:3}
+    .program-progress{position:absolute;left:18px;right:18px;bottom:14px;height:3px;background:rgba(255,255,255,.2);border-radius:999px;overflow:hidden;z-index:4}
+    .program-progress span{display:block;height:100%;width:0;background:white;border-radius:inherit}
+    .program.is-active .program-progress span{animation:programTimer 3s linear forwards}
+    @keyframes programTimer{from{width:0}to{width:100%}}
     .program .num{font-size:12px;font-weight:900;letter-spacing:.12em;opacity:.85}
     .program h3{margin:7px 0 4px;font-size:24px;line-height:1.05}
     .program p{margin:0;color:#dceae6;font-size:13px}
@@ -144,7 +150,8 @@
       .section-head{align-items:start;flex-direction:column}
       .program-grid,.features,.news-grid,.footer-grid,.spmb-points{grid-template-columns:1fr}
       .news-card:first-child{grid-column:auto}
-      .program{min-height:210px}
+      .program{min-height:210px;transform:scale(.97)}
+      .program.is-active{transform:scale(1.025) translateY(-5px)}
       .photo-card img{height:auto;aspect-ratio:4/5}
       .mini-card{position:static;width:auto;margin:0}
       .spmb-copy{padding:34px 24px}
@@ -209,10 +216,10 @@
           <p class="lead">Belajar bukan hanya di kelas. Setiap program dirancang untuk membekali siswa dengan keterampilan praktis, disiplin kerja, dan kesiapan melanjutkan langkah setelah lulus.</p>
         </div>
         <div class="program-grid">
-          <article class="program p1"><span class="num">01 / TEKNIK</span><h3>Teknik Otomotif</h3><p>Perawatan, servis, dan kompetensi kendaraan ringan.</p></article>
-          <article class="program p2"><span class="num">02 / BISNIS</span><h3>Bisnis Daring & Pemasaran</h3><p>Pemasaran, penjualan, dan keterampilan bisnis digital.</p></article>
-          <article class="program p3"><span class="num">03 / KEUANGAN</span><h3>Akuntansi</h3><p>Pembukuan, laporan keuangan, dan administrasi bisnis.</p></article>
-          <article class="program p4"><span class="num">04 / KREATIF</span><h3>Tata Busana</h3><p>Desain, pola, produksi, dan keterampilan fashion.</p></article>
+          <article class="program p1 is-active"><span class="num">01 / TEKNIK</span><h3>Teknik Otomotif</h3><p>Perawatan, servis, dan kompetensi kendaraan ringan.</p><div class="program-progress"><span></span></div></article>
+          <article class="program p2"><span class="num">02 / BISNIS</span><h3>Bisnis Daring & Pemasaran</h3><p>Pemasaran, penjualan, dan keterampilan bisnis digital.</p><div class="program-progress"><span></span></div></article>
+          <article class="program p3"><span class="num">03 / KEUANGAN</span><h3>Akuntansi</h3><p>Pembukuan, laporan keuangan, dan administrasi bisnis.</p><div class="program-progress"><span></span></div></article>
+          <article class="program p4"><span class="num">04 / KREATIF</span><h3>Tata Busana</h3><p>Desain, pola, produksi, dan keterampilan fashion.</p><div class="program-progress"><span></span></div></article>
         </div>
       </div>
     </section>
@@ -350,6 +357,50 @@
     </div>
   </footer>
 <script>
+  const programCards = Array.from(document.querySelectorAll('.program'));
+  let activeProgram = 0;
+  let programInterval;
+
+  function showProgram(index){
+    activeProgram = index;
+    programCards.forEach((card,i)=>{
+      card.classList.toggle('is-active', i === index);
+      const bar = card.querySelector('.program-progress span');
+      if(bar){
+        bar.style.animation = 'none';
+        void bar.offsetWidth;
+        bar.style.animation = '';
+      }
+    });
+  }
+
+  if(programCards.length){
+    showProgram(0);
+    programInterval = setInterval(()=>{
+      showProgram((activeProgram + 1) % programCards.length);
+    },3000);
+
+    programCards.forEach((card,index)=>{
+      card.addEventListener('mouseenter',()=>{
+        clearInterval(programInterval);
+        showProgram(index);
+      });
+      card.addEventListener('mouseleave',()=>{
+        clearInterval(programInterval);
+        programInterval = setInterval(()=>{
+          showProgram((activeProgram + 1) % programCards.length);
+        },3000);
+      });
+      card.addEventListener('click',()=>{
+        clearInterval(programInterval);
+        showProgram(index);
+        programInterval = setInterval(()=>{
+          showProgram((activeProgram + 1) % programCards.length);
+        },3000);
+      });
+    });
+  }
+
   document.getElementById('spmbForm')?.addEventListener('submit', function(e){
     e.preventDefault();
     const status = document.getElementById('formStatus');
