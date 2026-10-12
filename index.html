@@ -61,7 +61,8 @@
     .program-slide:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,34,28,.12),rgba(7,34,28,.82))}
     .program-slide-content{position:relative;z-index:2;max-width:540px;color:#fff}
     .program-logo-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);padding:8px 12px;border-radius:999px;margin-bottom:16px;backdrop-filter:blur(8px)}
-    .program-logo-icon{width:34px;height:34px;border-radius:10px;background:#0e7761;color:#fff;display:grid;place-items:center;font-weight:900;font-size:14px;box-shadow:0 8px 20px rgba(0,0,0,.16)}
+    .program-logo-icon{width:38px;height:38px;border-radius:12px;background:#0e7761;color:#fff;display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.16)}
+    .program-logo-icon svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
     .program-logo-text{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
     .program-slide-title{font-size:clamp(30px,4vw,52px);line-height:1.02;letter-spacing:-.04em;margin:0 0 10px;font-weight:900}
     .program-slide-desc{font-size:15px;line-height:1.7;color:#e6f1ed;margin:0 0 16px;max-width:480px}
@@ -75,6 +76,10 @@
     .program-side-info{background:linear-gradient(180deg,#f4faf7,#edf5f2);border:1px solid #dce7e3;border-radius:28px;padding:26px;display:grid;gap:16px;align-content:start}
     .program-side-info h3{margin:0;font-size:28px;line-height:1.08;letter-spacing:-.03em}.program-side-info p{margin:0;color:#63716c;line-height:1.75;font-size:14px}
     .program-side-points{display:grid;gap:12px}.program-side-point{background:#fff;border:1px solid #dce7e3;border-radius:18px;padding:14px 16px}.program-side-point b{display:block;margin-bottom:4px;color:#0b5d4b}
+    .program-mini-icons{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:4px}
+    .program-mini-icon{background:#fff;border:1px solid #dce7e3;border-radius:16px;padding:14px 10px;text-align:center;display:grid;gap:8px;justify-items:center}
+    .program-mini-icon svg{width:26px;height:26px;stroke:var(--green);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .program-mini-icon span{font-size:11px;font-weight:800;color:#43564f;line-height:1.2}
     .program-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:18px}
     .program{min-height:260px;border-radius:24px;padding:26px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;color:#fff;box-shadow:0 16px 50px rgba(7,60,48,.12);transform:scale(.96) translateY(8px);opacity:.62;filter:saturate(.72) brightness(.9);animation:cardSpotlight 12s infinite}
     .program:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,30,24,.04),rgba(3,30,24,.86));z-index:1}
@@ -100,6 +105,25 @@
     .news-body small{font-weight:900;color:var(--green);text-transform:uppercase;letter-spacing:.08em}
     .news-body h3{font-size:20px;line-height:1.28;margin:9px 0 8px}
     .news-body p{color:var(--muted);line-height:1.6;font-size:14px;margin:0}
+    .life{background:#0b352d;color:white}
+    .life .kicker{color:#79d5bd}
+    .life .lead{color:#c2d8d1}
+    .life-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+    .life-main,.life-stack article{position:relative;overflow:hidden;border-radius:28px;min-height:460px;background-size:cover;background-position:center}
+    .life-main{background-image:linear-gradient(180deg,rgba(4,35,28,.08),rgba(4,35,28,.8)),url('https://storage.schoolmedia.id/01-cms-website/smkmusacepu.sch.id/galeri/69a4f87257c12_PPDB2.jpeg')}
+    .life-stack{display:grid;gap:18px}
+    .life-stack article{min-height:221px}
+    .life-stack article:first-child{background-image:linear-gradient(180deg,rgba(4,35,28,.08),rgba(4,35,28,.82)),url('https://s3.schoolmedia.id/01-cms-website/smkmusacepu.sch.id/editor/6a0d2ab375f19WhatsApp_Image_2026-05-20_at_07.10.04.jpeg')}
+    .life-stack article:last-child{background-image:linear-gradient(180deg,rgba(4,35,28,.08),rgba(4,35,28,.82)),url('https://storage.schoolmedia.id/01-cms-website/smkmusacepu.sch.id/slide/w0aly1781961116.png')}
+    .life-caption{position:absolute;left:0;right:0;bottom:0;padding:28px;z-index:2}
+    .life-caption small{font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#9ce4d1}
+    .life-caption h3{font-size:clamp(24px,3vw,40px);line-height:1.04;margin:8px 0 8px}
+    .life-caption p{margin:0;color:#d5e7e1;line-height:1.6;max-width:580px}
+    .achievement-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .achievement{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:18px}
+    .achievement strong{display:block;font-size:18px;margin-bottom:4px}.achievement span{font-size:13px;color:#bcd5cd;line-height:1.4}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.is-visible{opacity:1;transform:none}
     .spmb{padding-top:48px}
     .spmb-card{display:grid;grid-template-columns:.85fr 1.15fr;overflow:hidden;border-radius:32px;background:#0c4f42;color:white;box-shadow:var(--shadow)}
     .spmb-copy{padding:56px}
@@ -134,12 +158,13 @@
       .stat:nth-child(2){border-right:0}
       .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
       .program-showcase{grid-template-columns:1fr}.program-stage{min-height:340px}.program-grid{grid-template-columns:1fr 1fr}
-      .why-grid,.spmb-card{grid-template-columns:1fr}
+      .why-grid,.spmb-card,.life-grid{grid-template-columns:1fr}
       .photo-card img{height:440px}
       .mini-card{right:auto}
       .news-grid{grid-template-columns:1fr 1fr}
       .news-card:first-child{grid-column:1/-1}
       .footer-grid{grid-template-columns:1fr 1fr}
+      .achievement-strip{grid-template-columns:1fr 1fr 1fr}
     }
     @media(max-width:620px){
       .container{width:min(100% - 24px,1180px)}
@@ -161,6 +186,8 @@
       .program-stage{min-height:300px;border-radius:24px}.program-slide{padding:20px}.program-slide-title{font-size:32px}.program-side-info{padding:20px;border-radius:22px}.program-grid,.features,.news-grid,.footer-grid,.spmb-points{grid-template-columns:1fr}
       .news-card:first-child{grid-column:auto}
       .program{min-height:220px}
+      .program-mini-icons{grid-template-columns:1fr 1fr}
+      .life-main,.life-stack article{min-height:320px}
       .photo-card img{height:auto;aspect-ratio:4/5}
       .mini-card{position:static;width:auto;margin:0}
       .spmb-copy{padding:34px 24px}
@@ -224,19 +251,24 @@
 
         <div class="program-showcase">
           <div class="program-stage">
-            <article class="program-slide s1"><div class="program-slide-content"><div class="program-logo-badge"><div class="program-logo-icon">M1</div><div class="program-logo-text">SMK MUSA CEPU</div></div><h3 class="program-slide-title">Teknik Otomotif</h3><p class="program-slide-desc">Perawatan, servis, dan kompetensi kendaraan ringan dengan pendekatan praktik dan kesiapan kerja.</p><span class="program-slide-pill">Spotlight 3 detik</span></div></article>
-            <article class="program-slide s2"><div class="program-slide-content"><div class="program-logo-badge"><div class="program-logo-icon">M1</div><div class="program-logo-text">SMK MUSA CEPU</div></div><h3 class="program-slide-title">Bisnis Daring & Pemasaran</h3><p class="program-slide-desc">Pemasaran, penjualan, komunikasi bisnis, dan adaptasi terhadap perdagangan modern.</p><span class="program-slide-pill">Spotlight 3 detik</span></div></article>
-            <article class="program-slide s3"><div class="program-slide-content"><div class="program-logo-badge"><div class="program-logo-icon">M1</div><div class="program-logo-text">SMK MUSA CEPU</div></div><h3 class="program-slide-title">Akuntansi</h3><p class="program-slide-desc">Pencatatan keuangan, administrasi bisnis, laporan keuangan, dan ketelitian kerja.</p><span class="program-slide-pill">Spotlight 3 detik</span></div></article>
-            <article class="program-slide s4"><div class="program-slide-content"><div class="program-logo-badge"><div class="program-logo-icon">M1</div><div class="program-logo-text">SMK MUSA CEPU</div></div><h3 class="program-slide-title">Tata Busana</h3><p class="program-slide-desc">Desain, pola, produksi, dan keterampilan fashion untuk dunia kerja maupun usaha mandiri.</p><span class="program-slide-pill">Spotlight 3 detik</span></div></article>
+            <article class="program-slide s1"><div class="program-slide-content"><div class="program-logo-badge"><div class="program-logo-icon"><svg viewBox="0 0 24 24"><path d="M4 14h16"/><path d="M6 14l1.4-4.2A2 2 0 0 1 9.3 8.5h5.4a2 2 0 0 1 1.9 1.3L18 14"/><path d="M5 14v3h2"/><path d="M19 14v3h-2"/><circle cx="8" cy="16.5" r="1"/><circle cx="16" cy="16.5" r="1"/></svg></div><div class="program-logo-text">TEKNIK OTOMOTIF</div></div><h3 class="program-slide-title">Teknik Otomotif</h3><p class="program-slide-desc">Perawatan, servis, dan kompetensi kendaraan ringan dengan pendekatan praktik dan kesiapan kerja.</p><span class="program-slide-pill">Spotlight 3 detik</span></div></article>
+            <article class="program-slide s2"><div class="program-slide-content"><div class="program-logo-badge"><div class="program-logo-icon"><svg viewBox="0 0 24 24"><path d="M4 7h16l-1 12H5L4 7Z"/><path d="M8 7a4 4 0 0 1 8 0"/></svg></div><div class="program-logo-text">BISNIS & PEMASARAN</div></div><h3 class="program-slide-title">Bisnis Daring & Pemasaran</h3><p class="program-slide-desc">Pemasaran, penjualan, komunikasi bisnis, dan adaptasi terhadap perdagangan modern.</p><span class="program-slide-pill">Spotlight 3 detik</span></div></article>
+            <article class="program-slide s3"><div class="program-slide-content"><div class="program-logo-badge"><div class="program-logo-icon"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2m2 0h4M8 15h2m2 0h4"/></svg></div><div class="program-logo-text">AKUNTANSI</div></div><h3 class="program-slide-title">Akuntansi</h3><p class="program-slide-desc">Pencatatan keuangan, administrasi bisnis, laporan keuangan, dan ketelitian kerja.</p><span class="program-slide-pill">Spotlight 3 detik</span></div></article>
+            <article class="program-slide s4"><div class="program-slide-content"><div class="program-logo-badge"><div class="program-logo-icon"><svg viewBox="0 0 24 24"><path d="M8 4c1.2 1.4 2.5 2 4 2s2.8-.6 4-2l3 4-2.5 2L18 20H6l1.5-10L5 8l3-4Z"/></svg></div><div class="program-logo-text">TATA BUSANA</div></div><h3 class="program-slide-title">Tata Busana</h3><p class="program-slide-desc">Desain, pola, produksi, dan keterampilan fashion untuk dunia kerja maupun usaha mandiri.</p><span class="program-slide-pill">Spotlight 3 detik</span></div></article>
           </div>
           <div class="program-side-info">
             <div class="kicker">Sorotan Jurusan</div>
             <h3>Empat pilihan, satu arah: siap masa depan.</h3>
             <p>Showcase utama berganti otomatis setiap 3 detik. Foto sekolah dipakai sebagai visual demo sementara sampai aset jurusan yang lebih spesifik tersedia.</p>
             <div class="program-side-points">
-              <div class="program-side-point"><b>Visual lebih hidup</b><span>Setiap jurusan mendapat giliran fokus yang jelas.</span></div>
-              <div class="program-side-point"><b>Mobile friendly</b><span>Animasi tetap berjalan tanpa JavaScript tambahan.</span></div>
-              <div class="program-side-point"><b>Mudah dikembangkan</b><span>Nanti tiap jurusan bisa memakai foto workshop/lab masing-masing.</span></div>
+              <div class="program-side-point"><b>Kompetensi nyata</b><span>Empat jurusan ditampilkan sebagai pilihan masa depan, bukan sekadar daftar menu.</span></div>
+              <div class="program-side-point"><b>Fokus bergantian</b><span>Setiap jurusan mendapat sorotan visual selama 3 detik.</span></div>
+            </div>
+            <div class="program-mini-icons">
+              <div class="program-mini-icon"><svg viewBox="0 0 24 24"><path d="M4 14h16"/><path d="M6 14l1.4-4.2A2 2 0 0 1 9.3 8.5h5.4a2 2 0 0 1 1.9 1.3L18 14"/><circle cx="8" cy="16.5" r="1"/><circle cx="16" cy="16.5" r="1"/></svg><span>Otomotif</span></div>
+              <div class="program-mini-icon"><svg viewBox="0 0 24 24"><path d="M4 7h16l-1 12H5L4 7Z"/><path d="M8 7a4 4 0 0 1 8 0"/></svg><span>Bisnis</span></div>
+              <div class="program-mini-icon"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2m2 0h4"/></svg><span>Akuntansi</span></div>
+              <div class="program-mini-icon"><svg viewBox="0 0 24 24"><path d="M8 4c1.2 1.4 2.5 2 4 2s2.8-.6 4-2l3 4-2.5 2L18 20H6l1.5-10L5 8l3-4Z"/></svg><span>Busana</span></div>
             </div>
           </div>
         </div>
@@ -251,7 +283,7 @@
     </section>
 
     <section class="why" id="keunggulan">
-      <div class="container why-grid">
+      <div class="container why-grid reveal">
         <div class="photo-card">
           <img src="https://storage.schoolmedia.id/01-cms-website/smkmusacepu.sch.id/galeri/69a4f87257c12_PPDB2.jpeg" alt="Kegiatan dan prestasi SMK Muhammadiyah 1 Cepu" />
           <div class="mini-card"><strong>Belajar dengan praktik.</strong><br><span style="color:#63716c;font-size:13px;line-height:1.5">Kompetensi dibangun lewat pengalaman nyata dan pembelajaran berbasis keahlian.</span></div>
@@ -270,8 +302,31 @@
       </div>
     </section>
 
+    <section class="life" id="kehidupan">
+      <div class="container reveal">
+        <div class="section-head">
+          <div><div class="kicker">Kehidupan Sekolah</div><h2>Belajar, berprestasi,<br>dan tumbuh bersama.</h2></div>
+          <p class="lead">Website baru seharusnya memperlihatkan suasana nyata sekolah: kegiatan siswa, karakter, kompetisi, dan momen yang membangun kebanggaan.</p>
+        </div>
+        <div class="life-grid">
+          <article class="life-main">
+            <div class="life-caption"><small>Aktivitas Siswa</small><h3>Sekolah yang terasa hidup.</h3><p>Visual kegiatan siswa dibuat dominan agar calon peserta didik dan orang tua bisa merasakan suasana sekolah sebelum berkunjung langsung.</p></div>
+          </article>
+          <div class="life-stack">
+            <article><div class="life-caption"><small>Karakter & Kebangsaan</small><h3>Disiplin dan kebersamaan.</h3></div></article>
+            <article><div class="life-caption"><small>Lingkungan Belajar</small><h3>Kampus vokasi di Cepu.</h3></div></article>
+          </div>
+        </div>
+        <div class="achievement-strip">
+          <div class="achievement"><strong>UKK Teknik Otomotif</strong><span>Evaluasi kompetensi praktik sebagai persiapan masuk dunia kerja.</span></div>
+          <div class="achievement"><strong>Pesantren Ramadan</strong><span>Penguatan karakter Islami dan spiritualitas siswa.</span></div>
+          <div class="achievement"><strong>Prestasi Siswa</strong><span>Pencak silat dan berbagai kegiatan sekolah ditampilkan lebih menonjol.</span></div>
+        </div>
+      </div>
+    </section>
+
     <section id="berita">
-      <div class="container">
+      <div class="container reveal">
         <div class="section-head">
           <div><div class="kicker">Kabar Sekolah</div><h2>Aktif, berkembang,<br>dan terus berkarya.</h2></div>
           <p class="lead">Berita sekolah ditampilkan sebagai cerita visual, bukan sekadar daftar artikel—agar aktivitas siswa dan suasana sekolah terasa hidup.</p>
@@ -294,7 +349,7 @@
     </section>
 
     <section class="spmb" id="spmb">
-      <div class="container">
+      <div class="container reveal">
         <div class="spmb-card">
           <div class="spmb-copy">
             <div class="kicker" style="color:#f5c45d">SPMB 2026/2027</div>
@@ -383,6 +438,16 @@
     </div>
   </footer>
 <script>
+  const revealObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+
   document.getElementById('spmbForm')?.addEventListener('submit', function(e){
     e.preventDefault();
     const status = document.getElementById('formStatus');
