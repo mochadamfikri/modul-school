@@ -55,23 +55,33 @@
     .kicker{font-weight:900;letter-spacing:.13em;text-transform:uppercase;font-size:12px;color:var(--green-2)}
     h2{font-size:clamp(34px,4.5vw,56px);line-height:1.04;letter-spacing:-.04em;margin:8px 0 0}
     .lead{color:var(--muted);line-height:1.75;max-width:650px}
-    .program-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-    .program{min-height:260px;border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;color:white;box-shadow:var(--shadow);transform:scale(.96) translateY(8px);opacity:.58;filter:saturate(.72) brightness(.9);transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .45s ease,filter .45s ease,box-shadow .45s ease;will-change:transform}
+    .program-showcase{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;margin:28px 0 20px}
+    .program-stage{position:relative;min-height:420px;border-radius:32px;overflow:hidden;box-shadow:0 20px 60px rgba(7,60,48,.16);background:#0b5d4b}
+    .program-slide{position:absolute;inset:0;padding:28px;display:flex;align-items:flex-end;opacity:0;transform:scale(1.06);animation:programShowcase 12s infinite;background-size:cover;background-position:center}
+    .program-slide:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,34,28,.12),rgba(7,34,28,.82))}
+    .program-slide-content{position:relative;z-index:2;max-width:540px;color:#fff}
+    .program-logo-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);padding:8px 12px;border-radius:999px;margin-bottom:16px;backdrop-filter:blur(8px)}
+    .program-logo-icon{width:34px;height:34px;border-radius:10px;background:#0e7761;color:#fff;display:grid;place-items:center;font-weight:900;font-size:14px;box-shadow:0 8px 20px rgba(0,0,0,.16)}
+    .program-logo-text{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .program-slide-title{font-size:clamp(30px,4vw,52px);line-height:1.02;letter-spacing:-.04em;margin:0 0 10px;font-weight:900}
+    .program-slide-desc{font-size:15px;line-height:1.7;color:#e6f1ed;margin:0 0 16px;max-width:480px}
+    .program-slide-pill{display:inline-block;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.24);font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+    .program-slide.s1{background-image:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.74)),url('https://storage.schoolmedia.id/01-cms-website/smkmusacepu.sch.id/slide/w0aly1781961116.png')}
+    .program-slide.s2{background-image:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.74)),url('https://storage.schoolmedia.id/01-cms-website/smkmusacepu.sch.id/galeri/69a4f87257c12_PPDB2.jpeg')}
+    .program-slide.s3{background-image:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.74)),url('https://s3.schoolmedia.id/01-cms-website/smkmusacepu.sch.id/editor/6a0d2ab375f19WhatsApp_Image_2026-05-20_at_07.10.04.jpeg')}
+    .program-slide.s4{background-image:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.74)),url('https://storage.schoolmedia.id/01-cms-website/smkmusacepu.sch.id/galeri/69a4e2a6dc0f8_PPDB.jpeg')}
+    .program-slide:nth-child(2){animation-delay:3s}.program-slide:nth-child(3){animation-delay:6s}.program-slide:nth-child(4){animation-delay:9s}
+    @keyframes programShowcase{0%{opacity:0;transform:scale(1.06)}4%{opacity:1;transform:scale(1)}21%{opacity:1;transform:scale(1)}25%{opacity:0;transform:scale(1.05)}100%{opacity:0;transform:scale(1.05)}}
+    .program-side-info{background:linear-gradient(180deg,#f4faf7,#edf5f2);border:1px solid #dce7e3;border-radius:28px;padding:26px;display:grid;gap:16px;align-content:start}
+    .program-side-info h3{margin:0;font-size:28px;line-height:1.08;letter-spacing:-.03em}.program-side-info p{margin:0;color:#63716c;line-height:1.75;font-size:14px}
+    .program-side-points{display:grid;gap:12px}.program-side-point{background:#fff;border:1px solid #dce7e3;border-radius:18px;padding:14px 16px}.program-side-point b{display:block;margin-bottom:4px;color:#0b5d4b}
+    .program-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:18px}
+    .program{min-height:260px;border-radius:24px;padding:26px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;color:#fff;box-shadow:0 16px 50px rgba(7,60,48,.12);transform:scale(.96) translateY(8px);opacity:.62;filter:saturate(.72) brightness(.9);animation:cardSpotlight 12s infinite}
     .program:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,30,24,.04),rgba(3,30,24,.86));z-index:1}
-    .program>*{position:relative;z-index:2}
-    .program.is-active{transform:scale(1.055) translateY(-12px);opacity:1;filter:saturate(1.12) brightness(1.05);box-shadow:0 22px 55px rgba(7,60,48,.28);z-index:5}
-    .program.is-active:after{content:"";position:absolute;inset:0;border:2px solid rgba(255,255,255,.5);border-radius:inherit;pointer-events:none;z-index:3}
-    .program-progress{position:absolute;left:18px;right:18px;bottom:14px;height:3px;background:rgba(255,255,255,.2);border-radius:999px;overflow:hidden;z-index:4}
-    .program-progress span{display:block;height:100%;width:0;background:white;border-radius:inherit}
-    .program.is-active .program-progress span{animation:programTimer 3s linear forwards}
-    @keyframes programTimer{from{width:0}to{width:100%}}
-    .program .num{font-size:12px;font-weight:900;letter-spacing:.12em;opacity:.85}
-    .program h3{margin:7px 0 4px;font-size:24px;line-height:1.05}
-    .program p{margin:0;color:#dceae6;font-size:13px}
-    .p1{background:linear-gradient(135deg,#16604d,#1b8a6d)}
-    .p2{background:linear-gradient(135deg,#2f5365,#497b8e)}
-    .p3{background:linear-gradient(135deg,#7c542f,#bf7f3d)}
-    .p4{background:linear-gradient(135deg,#654065,#9a6199)}
+    .program>*{position:relative;z-index:2}.program:nth-child(2){animation-delay:3s}.program:nth-child(3){animation-delay:6s}.program:nth-child(4){animation-delay:9s}
+    @keyframes cardSpotlight{0%,20%{transform:scale(1.04) translateY(-10px);opacity:1;filter:saturate(1.08) brightness(1.04);box-shadow:0 24px 56px rgba(7,60,48,.26)}25%,100%{transform:scale(.96) translateY(8px);opacity:.62;filter:saturate(.72) brightness(.9);box-shadow:0 16px 50px rgba(7,60,48,.12)}}
+    .program .num{font-size:12px;font-weight:900;letter-spacing:.12em;opacity:.88}.program h3{margin:7px 0 4px;font-size:24px;line-height:1.05}.program p{margin:0;color:#dceae6;font-size:13px;line-height:1.55}
+    .p1{background:linear-gradient(135deg,#16604d,#1b8a6d)}.p2{background:linear-gradient(135deg,#2f5365,#497b8e)}.p3{background:linear-gradient(135deg,#7c542f,#bf7f3d)}.p4{background:linear-gradient(135deg,#654065,#9a6199)}
     .why{background:var(--mint)}
     .why-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
     .photo-card{display:grid;gap:18px}
@@ -123,7 +133,7 @@
       .stats{grid-template-columns:1fr 1fr}
       .stat:nth-child(2){border-right:0}
       .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
-      .program-grid{grid-template-columns:1fr 1fr}
+      .program-showcase{grid-template-columns:1fr}.program-stage{min-height:340px}.program-grid{grid-template-columns:1fr 1fr}
       .why-grid,.spmb-card{grid-template-columns:1fr}
       .photo-card img{height:440px}
       .mini-card{right:auto}
@@ -148,10 +158,9 @@
       .stat strong{font-size:20px}
       section{padding:64px 0}
       .section-head{align-items:start;flex-direction:column}
-      .program-grid,.features,.news-grid,.footer-grid,.spmb-points{grid-template-columns:1fr}
+      .program-stage{min-height:300px;border-radius:24px}.program-slide{padding:20px}.program-slide-title{font-size:32px}.program-side-info{padding:20px;border-radius:22px}.program-grid,.features,.news-grid,.footer-grid,.spmb-points{grid-template-columns:1fr}
       .news-card:first-child{grid-column:auto}
-      .program{min-height:210px;transform:scale(.97)}
-      .program.is-active{transform:scale(1.025) translateY(-5px)}
+      .program{min-height:220px}
       .photo-card img{height:auto;aspect-ratio:4/5}
       .mini-card{position:static;width:auto;margin:0}
       .spmb-copy{padding:34px 24px}
@@ -209,17 +218,34 @@
     <section id="jurusan">
       <div class="container">
         <div class="section-head">
-          <div>
-            <div class="kicker">Pilih Masa Depanmu</div>
-            <h2>Program keahlian untuk<br>dunia nyata.</h2>
-          </div>
+          <div><div class="kicker">Pilih Masa Depanmu</div><h2>Program keahlian untuk<br>dunia nyata.</h2></div>
           <p class="lead">Belajar bukan hanya di kelas. Setiap program dirancang untuk membekali siswa dengan keterampilan praktis, disiplin kerja, dan kesiapan melanjutkan langkah setelah lulus.</p>
         </div>
+
+        <div class="program-showcase">
+          <div class="program-stage">
+            <article class="program-slide s1"><div class="program-slide-content"><div class="program-logo-badge"><div class="program-logo-icon">M1</div><div class="program-logo-text">SMK MUSA CEPU</div></div><h3 class="program-slide-title">Teknik Otomotif</h3><p class="program-slide-desc">Perawatan, servis, dan kompetensi kendaraan ringan dengan pendekatan praktik dan kesiapan kerja.</p><span class="program-slide-pill">Spotlight 3 detik</span></div></article>
+            <article class="program-slide s2"><div class="program-slide-content"><div class="program-logo-badge"><div class="program-logo-icon">M1</div><div class="program-logo-text">SMK MUSA CEPU</div></div><h3 class="program-slide-title">Bisnis Daring & Pemasaran</h3><p class="program-slide-desc">Pemasaran, penjualan, komunikasi bisnis, dan adaptasi terhadap perdagangan modern.</p><span class="program-slide-pill">Spotlight 3 detik</span></div></article>
+            <article class="program-slide s3"><div class="program-slide-content"><div class="program-logo-badge"><div class="program-logo-icon">M1</div><div class="program-logo-text">SMK MUSA CEPU</div></div><h3 class="program-slide-title">Akuntansi</h3><p class="program-slide-desc">Pencatatan keuangan, administrasi bisnis, laporan keuangan, dan ketelitian kerja.</p><span class="program-slide-pill">Spotlight 3 detik</span></div></article>
+            <article class="program-slide s4"><div class="program-slide-content"><div class="program-logo-badge"><div class="program-logo-icon">M1</div><div class="program-logo-text">SMK MUSA CEPU</div></div><h3 class="program-slide-title">Tata Busana</h3><p class="program-slide-desc">Desain, pola, produksi, dan keterampilan fashion untuk dunia kerja maupun usaha mandiri.</p><span class="program-slide-pill">Spotlight 3 detik</span></div></article>
+          </div>
+          <div class="program-side-info">
+            <div class="kicker">Sorotan Jurusan</div>
+            <h3>Empat pilihan, satu arah: siap masa depan.</h3>
+            <p>Showcase utama berganti otomatis setiap 3 detik. Foto sekolah dipakai sebagai visual demo sementara sampai aset jurusan yang lebih spesifik tersedia.</p>
+            <div class="program-side-points">
+              <div class="program-side-point"><b>Visual lebih hidup</b><span>Setiap jurusan mendapat giliran fokus yang jelas.</span></div>
+              <div class="program-side-point"><b>Mobile friendly</b><span>Animasi tetap berjalan tanpa JavaScript tambahan.</span></div>
+              <div class="program-side-point"><b>Mudah dikembangkan</b><span>Nanti tiap jurusan bisa memakai foto workshop/lab masing-masing.</span></div>
+            </div>
+          </div>
+        </div>
+
         <div class="program-grid">
-          <article class="program p1 is-active"><span class="num">01 / TEKNIK</span><h3>Teknik Otomotif</h3><p>Perawatan, servis, dan kompetensi kendaraan ringan.</p><div class="program-progress"><span></span></div></article>
-          <article class="program p2"><span class="num">02 / BISNIS</span><h3>Bisnis Daring & Pemasaran</h3><p>Pemasaran, penjualan, dan keterampilan bisnis digital.</p><div class="program-progress"><span></span></div></article>
-          <article class="program p3"><span class="num">03 / KEUANGAN</span><h3>Akuntansi</h3><p>Pembukuan, laporan keuangan, dan administrasi bisnis.</p><div class="program-progress"><span></span></div></article>
-          <article class="program p4"><span class="num">04 / KREATIF</span><h3>Tata Busana</h3><p>Desain, pola, produksi, dan keterampilan fashion.</p><div class="program-progress"><span></span></div></article>
+          <article class="program p1"><span class="num">01 / TEKNIK</span><h3>Teknik Otomotif</h3><p>Perawatan, servis, dan kompetensi kendaraan ringan.</p></article>
+          <article class="program p2"><span class="num">02 / BISNIS</span><h3>Bisnis Daring & Pemasaran</h3><p>Pemasaran, penjualan, dan keterampilan bisnis digital.</p></article>
+          <article class="program p3"><span class="num">03 / KEUANGAN</span><h3>Akuntansi</h3><p>Pembukuan, laporan keuangan, dan administrasi bisnis.</p></article>
+          <article class="program p4"><span class="num">04 / KREATIF</span><h3>Tata Busana</h3><p>Desain, pola, produksi, dan keterampilan fashion.</p></article>
         </div>
       </div>
     </section>
@@ -357,50 +383,6 @@
     </div>
   </footer>
 <script>
-  const programCards = Array.from(document.querySelectorAll('.program'));
-  let activeProgram = 0;
-  let programInterval;
-
-  function showProgram(index){
-    activeProgram = index;
-    programCards.forEach((card,i)=>{
-      card.classList.toggle('is-active', i === index);
-      const bar = card.querySelector('.program-progress span');
-      if(bar){
-        bar.style.animation = 'none';
-        void bar.offsetWidth;
-        bar.style.animation = '';
-      }
-    });
-  }
-
-  if(programCards.length){
-    showProgram(0);
-    programInterval = setInterval(()=>{
-      showProgram((activeProgram + 1) % programCards.length);
-    },3000);
-
-    programCards.forEach((card,index)=>{
-      card.addEventListener('mouseenter',()=>{
-        clearInterval(programInterval);
-        showProgram(index);
-      });
-      card.addEventListener('mouseleave',()=>{
-        clearInterval(programInterval);
-        programInterval = setInterval(()=>{
-          showProgram((activeProgram + 1) % programCards.length);
-        },3000);
-      });
-      card.addEventListener('click',()=>{
-        clearInterval(programInterval);
-        showProgram(index);
-        programInterval = setInterval(()=>{
-          showProgram((activeProgram + 1) % programCards.length);
-        },3000);
-      });
-    });
-  }
-
   document.getElementById('spmbForm')?.addEventListener('submit', function(e){
     e.preventDefault();
     const status = document.getElementById('formStatus');
