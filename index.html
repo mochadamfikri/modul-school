@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Konsep redesign website SMK Muhammadiyah 1 Cepu — demo proposal." />
+  <title>SMK Muhammadiyah 1 Cepu — Konsep Redesign</title>
+  <style>
+    :root{
+      --green:#0b5d4b;
+      --green-2:#0e7761;
+      --mint:#e9f5f1;
+      --gold:#f3b63f;
+      --ink:#13211d;
+      --muted:#63716c;
+      --line:#dce7e3;
+      --white:#fff;
+      --shadow:0 16px 50px rgba(7,60,48,.12);
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#fbfdfc}
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
+    .container{width:min(1180px,calc(100% - 36px));margin:auto}
+    .demo-bar{background:#102f27;color:white;text-align:center;padding:8px 16px;font-size:13px;letter-spacing:.02em}
+    .nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(11,93,75,.08)}
+    .nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900}
+    .mark{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--green),var(--green-2));display:grid;place-items:center;color:white;font-size:17px;box-shadow:0 10px 25px rgba(11,93,75,.25)}
+    .brand small{display:block;color:var(--muted);font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+    .menu{display:flex;align-items:center;gap:24px;font-size:14px;font-weight:700;color:#31433d}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:999px;font-weight:800;border:1px solid transparent;transition:.2s}
+    .btn-primary{background:var(--green);color:white;box-shadow:0 10px 28px rgba(11,93,75,.22)}
+    .btn-primary:hover{transform:translateY(-2px);background:#094f40}
+    .btn-secondary{background:white;color:var(--green);border-color:#cfe0da}
+    .hero{position:relative;min-height:710px;display:flex;align-items:center;color:white;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,38,30,.91) 0%,rgba(5,38,30,.67) 45%,rgba(5,38,30,.22) 100%)}
+    .hero-content{position:relative;z-index:2;padding:100px 0 90px;max-width:760px}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.26);font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+    .hero h1{font-size:clamp(44px,7vw,86px);line-height:.96;letter-spacing:-.05em;margin:22px 0 24px}
+    .hero p{font-size:clamp(17px,2vw,21px);line-height:1.65;color:#e9f4f0;max-width:650px;margin:0 0 34px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero .btn-secondary{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.35);color:white}
+    .floating-stats{position:relative;z-index:4;margin-top:-58px}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);background:white;border-radius:22px;box-shadow:var(--shadow);overflow:hidden;border:1px solid #edf3f1}
+    .stat{padding:26px 24px;text-align:center;border-right:1px solid var(--line)}
+    .stat:last-child{border-right:0}
+    .stat strong{display:block;font-size:26px;color:var(--green)}
+    .stat span{font-size:13px;color:var(--muted);font-weight:700}
+    section{padding:88px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:34px}
+    .kicker{font-weight:900;letter-spacing:.13em;text-transform:uppercase;font-size:12px;color:var(--green-2)}
+    h2{font-size:clamp(34px,4.5vw,56px);line-height:1.04;letter-spacing:-.04em;margin:8px 0 0}
+    .lead{color:var(--muted);line-height:1.75;max-width:650px}
+    .program-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .program{min-height:260px;border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;color:white;box-shadow:var(--shadow)}
+    .program:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,30,24,.04),rgba(3,30,24,.86));z-index:1}
+    .program>*{position:relative;z-index:2}
+    .program .num{font-size:12px;font-weight:900;letter-spacing:.12em;opacity:.85}
+    .program h3{margin:7px 0 4px;font-size:24px;line-height:1.05}
+    .program p{margin:0;color:#dceae6;font-size:13px}
+    .p1{background:linear-gradient(135deg,#16604d,#1b8a6d)}
+    .p2{background:linear-gradient(135deg,#2f5365,#497b8e)}
+    .p3{background:linear-gradient(135deg,#7c542f,#bf7f3d)}
+    .p4{background:linear-gradient(135deg,#654065,#9a6199)}
+    .why{background:var(--mint)}
+    .why-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+    .photo-card{position:relative}
+    .photo-card img{width:100%;height:570px;object-fit:cover;border-radius:32px;box-shadow:var(--shadow)}
+    .mini-card{position:absolute;right:-24px;bottom:28px;background:white;border-radius:20px;padding:18px 20px;width:240px;box-shadow:var(--shadow)}
+    .mini-card strong{color:var(--green);font-size:18px}
+    .features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+    .feature{background:white;padding:20px;border-radius:18px;border:1px solid #dbe9e4}
+    .feature b{display:block;margin-bottom:6px}
+    .feature span{font-size:13px;color:var(--muted);line-height:1.5}
+    .news-grid{display:grid;grid-template-columns:1.4fr .8fr .8fr;gap:18px}
+    .news-card{background:white;border:1px solid var(--line);border-radius:22px;overflow:hidden}
+    .news-visual{height:230px;background:linear-gradient(135deg,#0f604e,#16856c);display:flex;align-items:end;padding:22px;color:white}
+    .news-card:first-child .news-visual{height:310px;background-image:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.68)),url('https://s3.schoolmedia.id/01-cms-website/smkmusacepu.sch.id/editor/6a0d2ab375f19WhatsApp_Image_2026-05-20_at_07.10.04.jpeg');background-size:cover;background-position:center}
+    .news-body{padding:22px}
+    .news-body small{font-weight:900;color:var(--green);text-transform:uppercase;letter-spacing:.08em}
+    .news-body h3{font-size:20px;line-height:1.28;margin:9px 0 8px}
+    .news-body p{color:var(--muted);line-height:1.6;font-size:14px;margin:0}
+    .spmb{padding-top:32px}
+    .spmb-card{display:grid;grid-template-columns:.85fr 1.15fr;overflow:hidden;border-radius:32px;background:#0c4f42;color:white;box-shadow:var(--shadow)}
+    .spmb-copy{padding:56px}
+    .spmb-copy h2{margin-bottom:20px}
+    .spmb-copy p{color:#d9ece6;line-height:1.7}
+    .spmb-points{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:28px 0}
+    .spmb-point{padding:12px 14px;background:rgba(255,255,255,.08);border-radius:12px;font-size:13px;font-weight:700}
+    .spmb-media{background:#f0b33b;display:grid;place-items:center;padding:28px}
+    .spmb-media img{max-height:620px;border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.2)}
+    footer{background:#092e26;color:#cde0da;padding:48px 0 28px}
+    .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+    footer h4{color:white;margin-top:0}
+    footer p,footer li{color:#a9c5bc;line-height:1.7;font-size:14px}
+    footer ul{list-style:none;padding:0;margin:0}
+    .copyright{border-top:1px solid rgba(255,255,255,.1);margin-top:36px;padding-top:22px;font-size:12px;color:#87a59b;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    @media(max-width:920px){
+      .menu{display:none}
+      .hero{min-height:640px}
+      .stats{grid-template-columns:1fr 1fr}
+      .stat:nth-child(2){border-right:0}
+      .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+      .program-grid{grid-template-columns:1fr 1fr}
+      .why-grid,.spmb-card{grid-template-columns:1fr}
+      .photo-card img{height:440px}
+      .mini-card{right:16px}
+      .news-grid{grid-template-columns:1fr 1fr}
+      .news-card:first-child{grid-column:1/-1}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:620px){
+      .container{width:min(100% - 24px,1180px)}
+      .nav-inner{height:68px}
+      .nav .btn{padding:10px 14px;font-size:12px}
+      .brand div:last-child{font-size:13px}
+      .brand small{font-size:9px}
+      .mark{width:40px;height:40px}
+      .hero{min-height:610px}
+      .hero-content{padding:78px 0 90px}
+      .hero h1{font-size:47px}
+      .hero p{font-size:16px}
+      .hero-actions .btn{width:100%}
+      .floating-stats{margin-top:-32px}
+      .stat{padding:18px 10px}
+      .stat strong{font-size:20px}
+      section{padding:64px 0}
+      .section-head{align-items:start;flex-direction:column}
+      .program-grid,.features,.news-grid,.footer-grid,.spmb-points{grid-template-columns:1fr}
+      .news-card:first-child{grid-column:auto}
+      .program{min-height:210px}
+      .photo-card img{height:330px}
+      .mini-card{position:static;width:auto;margin-top:-30px;margin-inline:14px}
+      .spmb-copy{padding:34px 24px}
+      .spmb-media{padding:18px}
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-bar">KONSEP REDESIGN / DEMO PROPOSAL — BUKAN WEBSITE RESMI</div>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#home">
+        <div class="mark">M1</div>
+        <div>SMK Muhammadiyah 1 Cepu<small>Unggul • Islami • Siap Kerja</small></div>
+      </a>
+      <div class="menu">
+        <a href="#profil">Profil</a>
+        <a href="#jurusan">Jurusan</a>
+        <a href="#keunggulan">Keunggulan</a>
+        <a href="#berita">Berita</a>
+        <a href="#kontak">Kontak</a>
+      </div>
+      <a class="btn btn-primary" href="#spmb">SPMB 2026/2027</a>
+    </div>
+  </nav>
+
+  <main id="home">
+    <section class="hero">
+      <img class="hero-bg" src="https://storage.schoolmedia.id/01-cms-website/smkmusacepu.sch.id/slide/w0aly1781961116.png" alt="Gedung SMK Muhammadiyah 1 Cepu" />
+      <div class="container hero-content">
+        <span class="eyebrow">SMK Muhammadiyah 1 Cepu • Sejak 1975</span>
+        <h1>Siap Kerja.<br>Siap Berkarya.<br>Siap Masa Depan.</h1>
+        <p>Pendidikan vokasi yang membangun kompetensi, karakter Islami, dan kesiapan menghadapi dunia industri maupun pendidikan tinggi.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#spmb">Daftar SPMB</a>
+          <a class="btn btn-secondary" href="#jurusan">Jelajahi Jurusan</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="container floating-stats">
+      <div class="stats">
+        <div class="stat"><strong>1975</strong><span>Tahun Berdiri</span></div>
+        <div class="stat"><strong>4</strong><span>Program Keahlian</span></div>
+        <div class="stat"><strong>530+</strong><span>Peserta Didik*</span></div>
+        <div class="stat"><strong>B</strong><span>Akreditasi</span></div>
+      </div>
+    </div>
+
+    <section id="jurusan">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Pilih Masa Depanmu</div>
+            <h2>Program keahlian untuk<br>dunia nyata.</h2>
+          </div>
+          <p class="lead">Belajar bukan hanya di kelas. Setiap program dirancang untuk membekali siswa dengan keterampilan praktis, disiplin kerja, dan kesiapan melanjutkan langkah setelah lulus.</p>
+        </div>
+        <div class="program-grid">
+          <article class="program p1"><span class="num">01 / TEKNIK</span><h3>Teknik Otomotif</h3><p>Perawatan, servis, dan kompetensi kendaraan ringan.</p></article>
+          <article class="program p2"><span class="num">02 / BISNIS</span><h3>Bisnis Daring & Pemasaran</h3><p>Pemasaran, penjualan, dan keterampilan bisnis digital.</p></article>
+          <article class="program p3"><span class="num">03 / KEUANGAN</span><h3>Akuntansi</h3><p>Pembukuan, laporan keuangan, dan administrasi bisnis.</p></article>
+          <article class="program p4"><span class="num">04 / KREATIF</span><h3>Tata Busana</h3><p>Desain, pola, produksi, dan keterampilan fashion.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="why" id="keunggulan">
+      <div class="container why-grid">
+        <div class="photo-card">
+          <img src="https://storage.schoolmedia.id/01-cms-website/smkmusacepu.sch.id/galeri/69a4f87257c12_PPDB2.jpeg" alt="Kegiatan dan prestasi SMK Muhammadiyah 1 Cepu" />
+          <div class="mini-card"><strong>Belajar dengan praktik.</strong><br><span style="color:#63716c;font-size:13px;line-height:1.5">Kompetensi dibangun lewat pengalaman nyata dan pembelajaran berbasis keahlian.</span></div>
+        </div>
+        <div>
+          <div class="kicker">Kenapa SMK MUSA Cepu?</div>
+          <h2>Sekolah vokasi dengan karakter dan arah yang jelas.</h2>
+          <p class="lead">Konsep website baru menempatkan kekuatan sekolah di depan: kompetensi, fasilitas, pembelajaran industri, karakter Islami, serta jalur masa depan siswa.</p>
+          <div class="features">
+            <div class="feature"><b>Berbasis nilai Islam</b><span>Lingkungan pendidikan yang menguatkan akhlak, disiplin, dan tanggung jawab.</span></div>
+            <div class="feature"><b>Teaching Factory</b><span>Pembelajaran yang mendekatkan siswa pada proses dan standar dunia kerja.</span></div>
+            <div class="feature"><b>Fasilitas praktik</b><span>Lab komputer dan alat praktik untuk mendukung kompetensi keahlian.</span></div>
+            <div class="feature"><b>Siap kerja & kuliah</b><span>Kurikulum diarahkan untuk membuka lebih dari satu jalur masa depan setelah lulus.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="berita">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="kicker">Kabar Sekolah</div><h2>Aktif, berkembang,<br>dan terus berkarya.</h2></div>
+          <p class="lead">Berita sekolah ditampilkan sebagai cerita visual, bukan sekadar daftar artikel—agar aktivitas siswa dan suasana sekolah terasa hidup.</p>
+        </div>
+        <div class="news-grid">
+          <article class="news-card">
+            <div class="news-visual"></div>
+            <div class="news-body"><small>20 Mei 2026</small><h3>Upacara Hari Kebangkitan Nasional 2026</h3><p>Keluarga besar SMK Muhammadiyah 1 Cepu memperingati Harkitnas dengan semangat persatuan, disiplin, dan kerja keras.</p></div>
+          </article>
+          <article class="news-card">
+            <div class="news-visual"><strong>RAMADAN<br>1447 H</strong></div>
+            <div class="news-body"><small>2 Maret 2026</small><h3>Pesantren Ramadan</h3><p>Penguatan karakter, spiritualitas, dan kebersamaan siswa selama bulan Ramadan.</p></div>
+          </article>
+          <article class="news-card">
+            <div class="news-visual"><strong>UKK<br>OTOMOTIF</strong></div>
+            <div class="news-body"><small>13 April 2026</small><h3>Ujian Kompetensi Keahlian</h3><p>Siswa Teknik Otomotif diuji melalui proses praktik untuk mengukur kesiapan kompetensi.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="spmb" id="spmb">
+      <div class="container">
+        <div class="spmb-card">
+          <div class="spmb-copy">
+            <div class="kicker" style="color:#f5c45d">SPMB 2026/2027</div>
+            <h2>Mulai perjalananmu bersama SMK MUSA Cepu.</h2>
+            <p>Pendaftaran murid baru tahun ajaran 2026/2027 telah dipublikasikan oleh sekolah. Informasi pada demo ini mengikuti materi publik website sekolah.</p>
+            <div class="spmb-points">
+              <div class="spmb-point">✓ Teknik Otomotif</div>
+              <div class="spmb-point">✓ Bisnis & Pemasaran</div>
+              <div class="spmb-point">✓ Akuntansi</div>
+              <div class="spmb-point">✓ Tata Busana</div>
+            </div>
+            <a class="btn" style="background:#f3b63f;color:#17352d" href="https://bit.ly/SPMB_SMK_Musa" target="_blank" rel="noopener">Lihat Informasi Pendaftaran</a>
+          </div>
+          <div class="spmb-media">
+            <img src="https://storage.schoolmedia.id/01-cms-website/smkmusacepu.sch.id/galeri/69a4e2a6dc0f8_PPDB.jpeg" alt="Poster SPMB SMK Muhammadiyah 1 Cepu 2026/2027" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="kontak">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>SMK Muhammadiyah 1 Cepu</h4>
+          <p>Konsep renovasi tampilan website sekolah yang lebih modern, mobile-friendly, dan berorientasi pada siswa, orang tua, serta calon peserta didik.</p>
+        </div>
+        <div>
+          <h4>Alamat</h4>
+          <p>Jl. Ronggolawe No. 99, Balun, Kec. Cepu, Kab. Blora, Jawa Tengah.</p>
+        </div>
+        <div>
+          <h4>Kontak</h4>
+          <ul><li>info@smkmusacepu.sch.id</li><li>Website resmi: smkmusacepu.sch.id</li></ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <span>© 2026 Konsep Redesign SMK Muhammadiyah 1 Cepu</span>
+        <span>Demo proposal — belum terafiliasi sebagai website resmi sekolah.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
